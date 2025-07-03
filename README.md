@@ -6,8 +6,8 @@ This repository contains Java implementations of classic greedy algorithm proble
 
 ```
 HackWithInfy2025/
-├── knapShap.java                    # Fractional Knapsack Problem
 ├── GreedyApproach/
+│   ├── knapShap.java               # Fractional Knapsack Problem
 │   ├── ActivitySelection.java       # Activity Selection Problem
 │   └── BuyTwoChocolate.java        # Buy Two Chocolate Problem
 └── README.md                        # This file
@@ -15,7 +15,7 @@ HackWithInfy2025/
 
 ## 🎯 Problems Solved
 
-### 1. Fractional Knapsack Problem (`knapShap.java`)
+### 1. Fractional Knapsack Problem (`GreedyApproach/knapShap.java`)
 
 **Problem Statement:**
 Given a set of items with weights and values, and a knapsack with limited capacity, maximize the total value by selecting items (fractions allowed).
@@ -43,8 +43,9 @@ Result: 60 + 100 + (120 * 20/30) = 240.0
 
 **How to Run:**
 ```bash
+cd GreedyApproach
 javac knapShap.java
-java knapShap
+java GreedyApproach.knapShap
 ```
 
 ### 2. Activity Selection Problem (`GreedyApproach/ActivitySelection.java`)
@@ -130,14 +131,16 @@ java GreedyApproach.Solution
 
 2. **Compile and run individual programs:**
    ```bash
+   cd GreedyApproach
+
    # For Fractional Knapsack
-   javac knapShap.java && java knapShap
+   javac knapShap.java && java GreedyApproach.knapShap
 
    # For Activity Selection
-   javac GreedyApproach/ActivitySelection.java && java GreedyApproach.ActivitySelection
+   javac ActivitySelection.java && java GreedyApproach.ActivitySelection
 
    # For Buy Two Chocolate
-   javac GreedyApproach/BuyTwoChocolate.java && java GreedyApproach.Solution
+   javac BuyTwoChocolate.java && java GreedyApproach.Solution
    ```
 
 ## 📊 Algorithm Analysis
