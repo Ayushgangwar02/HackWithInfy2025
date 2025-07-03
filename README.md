@@ -10,7 +10,8 @@ HackWithInfy2025/
 │   ├── knapShap.java               # Fractional Knapsack Problem
 │   ├── ActivitySelection.java       # Activity Selection Problem
 │   ├── BuyTwoChocolate.java        # Buy Two Chocolate Problem
-│   └── partition.java              # Array Partition Problem
+│   ├── partition.java              # Array Partition Problem
+│   └── DiStringMatch.java          # DI String Match Problem
 └── README.md                        # This file
 ```
 
@@ -149,6 +150,43 @@ javac partition.java
 java GreedyApproach.partition
 ```
 
+### 5. DI String Match Problem (`GreedyApproach/DiStringMatch.java`)
+
+**Problem Statement:**
+Given a string s containing only 'I' (Increasing) and 'D' (Decreasing), return any permutation of [0, 1, 2, ..., n] such that for all i:
+- If s[i] == 'I', then perm[i] < perm[i+1]
+- If s[i] == 'D', then perm[i] > perm[i+1]
+
+**Algorithm Approach:**
+- **Greedy Strategy**: Use two pointers (low and high) to assign values
+- **Time Complexity**: O(n) - single pass through string
+- **Space Complexity**: O(1) - excluding output array
+
+**Solution Explanation:**
+1. Initialize `low = 0` and `high = n` (where n is string length)
+2. For each character in the string:
+   - If 'I' (Increasing): assign `low` and increment `low`
+   - If 'D' (Decreasing): assign `high` and decrement `high`
+3. Assign the remaining value (`low` or `high`) to the last position
+
+**Key Insight:**
+By using the smallest available number for 'I' and largest for 'D', we ensure all constraints are satisfied.
+
+**Example:**
+```
+Input: s = "IDID"
+Process: I->0, D->4, I->1, D->3, last->2
+Output: [0, 4, 1, 3, 2]
+Verification: 0<4, 4>1, 1<3, 3>2 ✓
+```
+
+**How to Run:**
+```bash
+cd GreedyApproach
+javac DiStringMatch.java
+java GreedyApproach.DiStringMatch
+```
+
 ## 🔧 Key Features
 
 - **Clean Code**: Well-structured, readable Java implementations
@@ -179,6 +217,9 @@ java GreedyApproach.partition
 
    # For Array Partition
    javac partition.java && java GreedyApproach.partition
+
+   # For DI String Match
+   javac DiStringMatch.java && java GreedyApproach.DiStringMatch
    ```
 
 ## 📊 Algorithm Analysis
@@ -189,6 +230,7 @@ java GreedyApproach.partition
 | Activity Selection | O(n log n) | O(1) | Earliest end time |
 | Buy Two Chocolate | O(n log n) | O(1) | Two lowest prices |
 | Array Partition | O(n log n) | O(1) | Adjacent pairs after sorting |
+| DI String Match | O(n) | O(1) | Min for 'I', Max for 'D' |
 
 ## 🎓 Learning Outcomes
 
