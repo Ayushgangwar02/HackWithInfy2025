@@ -9,7 +9,8 @@ HackWithInfy2025/
 ├── GreedyApproach/
 │   ├── knapShap.java               # Fractional Knapsack Problem
 │   ├── ActivitySelection.java       # Activity Selection Problem
-│   └── BuyTwoChocolate.java        # Buy Two Chocolate Problem
+│   ├── BuyTwoChocolate.java        # Buy Two Chocolate Problem
+│   └── partition.java              # Array Partition Problem
 └── README.md                        # This file
 ```
 
@@ -114,6 +115,40 @@ javac BuyTwoChocolate.java
 java GreedyApproach.Solution
 ```
 
+### 4. Array Partition Problem (`GreedyApproach/partition.java`)
+
+**Problem Statement:**
+Given an integer array of 2n integers, group these integers into n pairs such that the sum of min(ai, bi) for all i is maximized.
+
+**Algorithm Approach:**
+- **Greedy Strategy**: Sort the array and pair adjacent elements
+- **Time Complexity**: O(n log n) due to sorting
+- **Space Complexity**: O(1)
+
+**Solution Explanation:**
+1. Sort the array in ascending order
+2. Pair adjacent elements: (nums[0], nums[1]), (nums[2], nums[3]), etc.
+3. Take the minimum of each pair (which will be the first element after sorting)
+4. Sum all the minimums to get the maximum possible sum
+
+**Key Insight:**
+After sorting, pairing adjacent elements ensures that we minimize the "waste" - the larger element in each pair that doesn't contribute to the sum.
+
+**Example:**
+```
+Input: [1, 4, 3, 2, 6, 5]
+After sorting: [1, 2, 3, 4, 5, 6]
+Pairs: (1,2), (3,4), (5,6)
+Sum of mins: 1 + 3 + 5 = 9
+```
+
+**How to Run:**
+```bash
+cd GreedyApproach
+javac partition.java
+java GreedyApproach.partition
+```
+
 ## 🔧 Key Features
 
 - **Clean Code**: Well-structured, readable Java implementations
@@ -141,6 +176,9 @@ java GreedyApproach.Solution
 
    # For Buy Two Chocolate
    javac BuyTwoChocolate.java && java GreedyApproach.Solution
+
+   # For Array Partition
+   javac partition.java && java GreedyApproach.partition
    ```
 
 ## 📊 Algorithm Analysis
@@ -150,6 +188,7 @@ java GreedyApproach.Solution
 | Fractional Knapsack | O(n log n) | O(1) | Highest value/weight ratio |
 | Activity Selection | O(n log n) | O(1) | Earliest end time |
 | Buy Two Chocolate | O(n log n) | O(1) | Two lowest prices |
+| Array Partition | O(n log n) | O(1) | Adjacent pairs after sorting |
 
 ## 🎓 Learning Outcomes
 
