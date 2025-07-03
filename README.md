@@ -8,7 +8,8 @@ This repository contains Java implementations of classic greedy algorithm proble
 HackWithInfy2025/
 ├── knapShap.java                    # Fractional Knapsack Problem
 ├── GreedyApproach/
-│   └── ActivitySelection.java       # Activity Selection Problem
+│   ├── ActivitySelection.java       # Activity Selection Problem
+│   └── BuyTwoChocolate.java        # Buy Two Chocolate Problem
 └── README.md                        # This file
 ```
 
@@ -79,6 +80,39 @@ javac ActivitySelection.java
 java GreedyApproach.ActivitySelection
 ```
 
+### 3. Buy Two Chocolate Problem (`GreedyApproach/BuyTwoChocolate.java`)
+
+**Problem Statement:**
+Given an array of chocolate prices and an amount of money, find the leftover money after buying the two cheapest chocolates (if possible).
+
+**Algorithm Approach:**
+- **Greedy Strategy**: Sort prices and select the two cheapest chocolates
+- **Time Complexity**: O(n log n) due to sorting
+- **Space Complexity**: O(1)
+
+**Solution Explanation:**
+1. Sort the chocolate prices in ascending order
+2. Take the two cheapest chocolates (first two elements after sorting)
+3. Calculate total cost of the two cheapest chocolates
+4. If total cost ≤ available money, return leftover money
+5. Otherwise, return original money (can't afford two chocolates)
+
+**Example:**
+```
+Prices: [1, 2, 2]
+Money: 3
+After sorting: [1, 2, 2]
+Two cheapest: 1 + 2 = 3
+Since 3 ≤ 3, leftover = 3 - 3 = 0
+```
+
+**How to Run:**
+```bash
+cd GreedyApproach
+javac BuyTwoChocolate.java
+java GreedyApproach.Solution
+```
+
 ## 🔧 Key Features
 
 - **Clean Code**: Well-structured, readable Java implementations
@@ -98,9 +132,12 @@ java GreedyApproach.ActivitySelection
    ```bash
    # For Fractional Knapsack
    javac knapShap.java && java knapShap
-   
+
    # For Activity Selection
    javac GreedyApproach/ActivitySelection.java && java GreedyApproach.ActivitySelection
+
+   # For Buy Two Chocolate
+   javac GreedyApproach/BuyTwoChocolate.java && java GreedyApproach.Solution
    ```
 
 ## 📊 Algorithm Analysis
@@ -109,6 +146,7 @@ java GreedyApproach.ActivitySelection
 |---------|----------------|------------------|---------------|
 | Fractional Knapsack | O(n log n) | O(1) | Highest value/weight ratio |
 | Activity Selection | O(n log n) | O(1) | Earliest end time |
+| Buy Two Chocolate | O(n log n) | O(1) | Two lowest prices |
 
 ## 🎓 Learning Outcomes
 
