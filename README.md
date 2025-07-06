@@ -12,7 +12,8 @@ HackWithInfy2025/
 │   ├── BuyTwoChocolate.java        # Buy Two Chocolate Problem
 │   ├── partition.java              # Array Partition Problem
 │   ├── DiStringMatch.java          # DI String Match Problem
-│   └── minCoin.java                # Minimum Coin Change Problem (DP)
+│   ├── minCoin.java                # Minimum Coin Change Problem (DP)
+│   └── JobSeqPro.java              # Job Sequencing Problem
 └── README.md                        # This file
 ```
 
@@ -225,6 +226,41 @@ javac minCoin.java
 java GreedyApproach.minCoin
 ```
 
+### 7. Job Sequencing Problem (`GreedyApproach/JobSeqPro.java`)
+
+**Problem Statement:**
+Given a set of jobs with deadlines and profits, schedule jobs to maximize profit such that no two jobs overlap and each job is completed before its deadline.
+
+**Algorithm Approach:**
+- **Greedy Strategy**: Sort jobs by profit (highest first), then assign to latest possible slot
+- **Time Complexity**: O(n²) where n is number of jobs
+- **Space Complexity**: O(max_deadline)
+
+**Solution Explanation:**
+1. Create a `Job` class with id, profit, and deadline
+2. Sort jobs by profit in descending order (greedy choice: highest profit first)
+3. Create a boolean array to track occupied time slots
+4. For each job, try to assign it to the latest possible slot before its deadline
+5. If a slot is available, assign the job and add profit to total
+
+**Key Insight:**
+By sorting by profit and assigning to the latest possible slot, we maximize the chance of fitting more high-profit jobs.
+
+**Example:**
+```
+Jobs: [("a",100,2), ("b",19,1), ("c",27,2), ("d",25,1), ("e",15,3)]
+After sorting by profit: [("a",100,2), ("c",27,2), ("d",25,1), ("b",19,1), ("e",15,3)]
+Schedule: Job "a" at slot 2, Job "c" at slot 1, Job "e" at slot 3
+Total profit: 100 + 27 + 15 = 142
+```
+
+**How to Run:**
+```bash
+cd GreedyApproach
+javac JobSeqPro.java
+java GreedyApproach.JobSeqPro
+```
+
 ## 🔧 Key Features
 
 - **Clean Code**: Well-structured, readable Java implementations
@@ -261,6 +297,9 @@ java GreedyApproach.minCoin
 
    # For Minimum Coin Change
    javac minCoin.java && java GreedyApproach.minCoin
+
+   # For Job Sequencing
+   javac JobSeqPro.java && java GreedyApproach.JobSeqPro
    ```
 
 ## 📊 Algorithm Analysis
@@ -273,6 +312,7 @@ java GreedyApproach.minCoin
 | Array Partition | O(n log n) | O(1) | Greedy: Adjacent pairs after sorting |
 | DI String Match | O(n) | O(1) | Greedy: Min for 'I', Max for 'D' |
 | Minimum Coin Change | O(amount × coins) | O(amount) | DP: Optimal substructure |
+| Job Sequencing | O(n²) | O(max_deadline) | Greedy: Highest profit first |
 
 ## 🎓 Learning Outcomes
 
