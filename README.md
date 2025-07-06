@@ -11,7 +11,8 @@ HackWithInfy2025/
 │   ├── ActivitySelection.java       # Activity Selection Problem
 │   ├── BuyTwoChocolate.java        # Buy Two Chocolate Problem
 │   ├── partition.java              # Array Partition Problem
-│   └── DiStringMatch.java          # DI String Match Problem
+│   ├── DiStringMatch.java          # DI String Match Problem
+│   └── minCoin.java                # Minimum Coin Change Problem (DP)
 └── README.md                        # This file
 ```
 
@@ -187,6 +188,43 @@ javac DiStringMatch.java
 java GreedyApproach.DiStringMatch
 ```
 
+### 6. Minimum Coin Change Problem (`GreedyApproach/minCoin.java`)
+
+**Problem Statement:**
+Given an array of coin denominations and a target amount, find the minimum number of coins needed to make that amount. Return -1 if it's impossible.
+
+**Algorithm Approach:**
+- **Strategy**: Dynamic Programming (Note: Greedy doesn't work for all coin systems)
+- **Time Complexity**: O(amount × coins.length)
+- **Space Complexity**: O(amount)
+
+**Solution Explanation:**
+1. Create a DP array where `dp[i]` represents minimum coins needed for amount `i`
+2. Initialize `dp[0] = 0` (0 coins needed for amount 0)
+3. For each amount from 1 to target:
+   - Try each coin denomination
+   - If coin ≤ current amount, update: `dp[i] = min(dp[i], dp[i-coin] + 1)`
+4. Return `dp[amount]` if possible, otherwise -1
+
+**Why Not Greedy?**
+Greedy (always pick largest coin) fails for systems like [1,3,4] with amount=6:
+- Greedy: 4+1+1 = 3 coins
+- Optimal: 3+3 = 2 coins
+
+**Example:**
+```
+Coins: [1, 2, 5], Amount: 11
+DP process: dp[11] = min(dp[10]+1, dp[9]+1, dp[6]+1) = 3
+Result: 3 coins (5+5+1)
+```
+
+**How to Run:**
+```bash
+cd GreedyApproach
+javac minCoin.java
+java GreedyApproach.minCoin
+```
+
 ## 🔧 Key Features
 
 - **Clean Code**: Well-structured, readable Java implementations
@@ -220,17 +258,21 @@ java GreedyApproach.DiStringMatch
 
    # For DI String Match
    javac DiStringMatch.java && java GreedyApproach.DiStringMatch
+
+   # For Minimum Coin Change
+   javac minCoin.java && java GreedyApproach.minCoin
    ```
 
 ## 📊 Algorithm Analysis
 
-| Problem | Time Complexity | Space Complexity | Greedy Choice |
-|---------|----------------|------------------|---------------|
-| Fractional Knapsack | O(n log n) | O(1) | Highest value/weight ratio |
-| Activity Selection | O(n log n) | O(1) | Earliest end time |
-| Buy Two Chocolate | O(n log n) | O(1) | Two lowest prices |
-| Array Partition | O(n log n) | O(1) | Adjacent pairs after sorting |
-| DI String Match | O(n) | O(1) | Min for 'I', Max for 'D' |
+| Problem | Time Complexity | Space Complexity | Strategy |
+|---------|----------------|------------------|----------|
+| Fractional Knapsack | O(n log n) | O(1) | Greedy: Highest value/weight ratio |
+| Activity Selection | O(n log n) | O(1) | Greedy: Earliest end time |
+| Buy Two Chocolate | O(n log n) | O(1) | Greedy: Two lowest prices |
+| Array Partition | O(n log n) | O(1) | Greedy: Adjacent pairs after sorting |
+| DI String Match | O(n) | O(1) | Greedy: Min for 'I', Max for 'D' |
+| Minimum Coin Change | O(amount × coins) | O(amount) | DP: Optimal substructure |
 
 ## 🎓 Learning Outcomes
 
