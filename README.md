@@ -14,7 +14,8 @@ HackWithInfy2025/
 │   ├── DiStringMatch.java          # DI String Match Problem
 │   └── JobSeqPro.java              # Job Sequencing Problem
 ├── DynamicProgramming/
-│   └── minCoin.java                # Minimum Coin Change Problem
+│   ├── minCoin.java                # Minimum Coin Change Problem
+│   └── Fibonacci.java              # Fibonacci Sequence Problem
 ├── GreedyApproach/                 # Legacy folder (to be removed)
 └── README.md                        # This file
 ```
@@ -267,6 +268,46 @@ javac minCoin.java
 java DynamicProgramming.minCoin
 ```
 
+### 8. Fibonacci Sequence Problem (`DynamicProgramming/Fibonacci.java`)
+
+**Problem Statement:**
+Calculate the nth Fibonacci number where F(0) = 0, F(1) = 1, and F(n) = F(n-1) + F(n-2) for n > 1.
+
+**Algorithm Approach:**
+- **Strategy**: Simple Recursion (can be optimized with DP)
+- **Time Complexity**: O(2^n) - exponential (inefficient for large n)
+- **Space Complexity**: O(n) - due to recursion stack
+
+**Solution Explanation:**
+1. **Base Cases**: If n ≤ 1, return n
+2. **Recursive Case**: Return fib(n-1) + fib(n-2)
+3. **Simple Implementation**: Direct translation of mathematical definition
+
+**Fibonacci Sequence:**
+```
+F(0) = 0, F(1) = 1, F(2) = 1, F(3) = 2, F(4) = 3, F(5) = 5, F(6) = 8, F(7) = 13...
+```
+
+**Example:**
+```
+Input: n = 10
+Output: Fibonacci number at position 10 is: 55
+Calculation: F(10) = F(9) + F(8) = 34 + 21 = 55
+```
+
+**Note on Optimization:**
+This implementation uses simple recursion. For better performance with large numbers, consider:
+- Memoization (Top-down DP)
+- Tabulation (Bottom-up DP)
+- Space-optimized iterative approach
+
+**How to Run:**
+```bash
+cd DynamicProgramming
+javac Fibonacci.java
+java DynamicProgramming.Fibonacci
+```
+
 **Algorithm Approach:**
 - **Greedy Strategy**: Sort jobs by profit (highest first), then assign to latest possible slot
 - **Time Complexity**: O(n²) where n is number of jobs
@@ -343,6 +384,9 @@ java GreedyAlgorithms.JobSeqPro
 
    # For Minimum Coin Change
    javac minCoin.java && java DynamicProgramming.minCoin
+
+   # For Fibonacci Sequence
+   javac Fibonacci.java && java DynamicProgramming.Fibonacci
    ```
 
 ## 📊 Algorithm Analysis
@@ -354,8 +398,9 @@ java GreedyAlgorithms.JobSeqPro
 | Buy Two Chocolate | O(n log n) | O(1) | Greedy: Two lowest prices |
 | Array Partition | O(n log n) | O(1) | Greedy: Adjacent pairs after sorting |
 | DI String Match | O(n) | O(1) | Greedy: Min for 'I', Max for 'D' |
-| Minimum Coin Change | O(amount × coins) | O(amount) | DP: Optimal substructure |
 | Job Sequencing | O(n²) | O(max_deadline) | Greedy: Highest profit first |
+| Minimum Coin Change | O(amount × coins) | O(amount) | DP: Optimal substructure |
+| Fibonacci Sequence | O(2^n) | O(n) | Recursion: Mathematical definition |
 
 ## 🎓 Learning Outcomes
 
