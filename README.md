@@ -1,25 +1,29 @@
-# HackWithInfy2025 - Greedy Algorithm Solutions
+# HackWithInfy2025 - Algorithm Solutions
 
-This repository contains Java implementations of classic greedy algorithm problems developed for HackWithInfy2025.
+This repository contains Java implementations of classic algorithmic problems organized by approach, developed for HackWithInfy2025.
 
 ## 📁 Project Structure
 
 ```
 HackWithInfy2025/
-├── GreedyApproach/
+├── GreedyAlgorithms/
 │   ├── knapShap.java               # Fractional Knapsack Problem
 │   ├── ActivitySelection.java       # Activity Selection Problem
 │   ├── BuyTwoChocolate.java        # Buy Two Chocolate Problem
 │   ├── partition.java              # Array Partition Problem
 │   ├── DiStringMatch.java          # DI String Match Problem
-│   ├── minCoin.java                # Minimum Coin Change Problem (DP)
 │   └── JobSeqPro.java              # Job Sequencing Problem
+├── DynamicProgramming/
+│   └── minCoin.java                # Minimum Coin Change Problem
+├── GreedyApproach/                 # Legacy folder (to be removed)
 └── README.md                        # This file
 ```
 
 ## 🎯 Problems Solved
 
-### 1. Fractional Knapsack Problem (`GreedyApproach/knapShap.java`)
+## 🟢 Greedy Algorithms
+
+### 1. Fractional Knapsack Problem (`GreedyAlgorithms/knapShap.java`)
 
 **Problem Statement:**
 Given a set of items with weights and values, and a knapsack with limited capacity, maximize the total value by selecting items (fractions allowed).
@@ -47,12 +51,12 @@ Result: 60 + 100 + (120 * 20/30) = 240.0
 
 **How to Run:**
 ```bash
-cd GreedyApproach
+cd GreedyAlgorithms
 javac knapShap.java
-java GreedyApproach.knapShap
+java GreedyAlgorithms.knapShap
 ```
 
-### 2. Activity Selection Problem (`GreedyApproach/ActivitySelection.java`)
+### 2. Activity Selection Problem (`GreedyAlgorithms/ActivitySelection.java`)
 
 **Problem Statement:**
 Given a set of activities with start and end times, select the maximum number of non-overlapping activities.
@@ -80,12 +84,12 @@ Result: 3 activities
 
 **How to Run:**
 ```bash
-cd GreedyApproach
+cd GreedyAlgorithms
 javac ActivitySelection.java
-java GreedyApproach.ActivitySelection
+java GreedyAlgorithms.ActivitySelection
 ```
 
-### 3. Buy Two Chocolate Problem (`GreedyApproach/BuyTwoChocolate.java`)
+### 3. Buy Two Chocolate Problem (`GreedyAlgorithms/BuyTwoChocolate.java`)
 
 **Problem Statement:**
 Given an array of chocolate prices and an amount of money, find the leftover money after buying the two cheapest chocolates (if possible).
@@ -113,12 +117,12 @@ Since 3 ≤ 3, leftover = 3 - 3 = 0
 
 **How to Run:**
 ```bash
-cd GreedyApproach
+cd GreedyAlgorithms
 javac BuyTwoChocolate.java
-java GreedyApproach.Solution
+java GreedyAlgorithms.Solution
 ```
 
-### 4. Array Partition Problem (`GreedyApproach/partition.java`)
+### 4. Array Partition Problem (`GreedyAlgorithms/partition.java`)
 
 **Problem Statement:**
 Given an integer array of 2n integers, group these integers into n pairs such that the sum of min(ai, bi) for all i is maximized.
@@ -147,12 +151,12 @@ Sum of mins: 1 + 3 + 5 = 9
 
 **How to Run:**
 ```bash
-cd GreedyApproach
+cd GreedyAlgorithms
 javac partition.java
-java GreedyApproach.partition
+java GreedyAlgorithms.partition
 ```
 
-### 5. DI String Match Problem (`GreedyApproach/DiStringMatch.java`)
+### 5. DI String Match Problem (`GreedyAlgorithms/DiStringMatch.java`)
 
 **Problem Statement:**
 Given a string s containing only 'I' (Increasing) and 'D' (Decreasing), return any permutation of [0, 1, 2, ..., n] such that for all i:
@@ -184,12 +188,49 @@ Verification: 0<4, 4>1, 1<3, 3>2 ✓
 
 **How to Run:**
 ```bash
-cd GreedyApproach
+cd GreedyAlgorithms
 javac DiStringMatch.java
-java GreedyApproach.DiStringMatch
+java GreedyAlgorithms.DiStringMatch
 ```
 
-### 6. Minimum Coin Change Problem (`GreedyApproach/minCoin.java`)
+### 6. Job Sequencing Problem (`GreedyAlgorithms/JobSeqPro.java`)
+
+**Problem Statement:**
+Given a set of jobs with deadlines and profits, schedule jobs to maximize profit such that no two jobs overlap and each job is completed before its deadline.
+
+**Algorithm Approach:**
+- **Greedy Strategy**: Sort jobs by profit (highest first), then assign to latest possible slot
+- **Time Complexity**: O(n²) where n is number of jobs
+- **Space Complexity**: O(max_deadline)
+
+**Solution Explanation:**
+1. Create a `Job` class with id, profit, and deadline
+2. Sort jobs by profit in descending order (greedy choice: highest profit first)
+3. Create a boolean array to track occupied time slots
+4. For each job, try to assign it to the latest possible slot before its deadline
+5. If a slot is available, assign the job and add profit to total
+
+**Key Insight:**
+By sorting by profit and assigning to the latest possible slot, we maximize the chance of fitting more high-profit jobs.
+
+**Example:**
+```
+Jobs: [("a",100,2), ("b",19,1), ("c",27,2), ("d",25,1), ("e",15,3)]
+After sorting by profit: [("a",100,2), ("c",27,2), ("d",25,1), ("b",19,1), ("e",15,3)]
+Schedule: Job "a" at slot 2, Job "c" at slot 1, Job "e" at slot 3
+Total profit: 100 + 27 + 15 = 142
+```
+
+**How to Run:**
+```bash
+cd GreedyAlgorithms
+javac JobSeqPro.java
+java GreedyAlgorithms.JobSeqPro
+```
+
+## 🔵 Dynamic Programming
+
+### 7. Minimum Coin Change Problem (`DynamicProgramming/minCoin.java`)
 
 **Problem Statement:**
 Given an array of coin denominations and a target amount, find the minimum number of coins needed to make that amount. Return -1 if it's impossible.
@@ -221,15 +262,10 @@ Result: 3 coins (5+5+1)
 
 **How to Run:**
 ```bash
-cd GreedyApproach
+cd DynamicProgramming
 javac minCoin.java
-java GreedyApproach.minCoin
+java DynamicProgramming.minCoin
 ```
-
-### 7. Job Sequencing Problem (`GreedyApproach/JobSeqPro.java`)
-
-**Problem Statement:**
-Given a set of jobs with deadlines and profits, schedule jobs to maximize profit such that no two jobs overlap and each job is completed before its deadline.
 
 **Algorithm Approach:**
 - **Greedy Strategy**: Sort jobs by profit (highest first), then assign to latest possible slot
@@ -256,9 +292,9 @@ Total profit: 100 + 27 + 15 = 142
 
 **How to Run:**
 ```bash
-cd GreedyApproach
+cd GreedyAlgorithms
 javac JobSeqPro.java
-java GreedyApproach.JobSeqPro
+java GreedyAlgorithms.JobSeqPro
 ```
 
 ## 🔧 Key Features
@@ -277,29 +313,36 @@ java GreedyApproach.JobSeqPro
    ```
 
 2. **Compile and run individual programs:**
+
+   **Greedy Algorithms:**
    ```bash
-   cd GreedyApproach
+   cd GreedyAlgorithms
 
    # For Fractional Knapsack
-   javac knapShap.java && java GreedyApproach.knapShap
+   javac knapShap.java && java GreedyAlgorithms.knapShap
 
    # For Activity Selection
-   javac ActivitySelection.java && java GreedyApproach.ActivitySelection
+   javac ActivitySelection.java && java GreedyAlgorithms.ActivitySelection
 
    # For Buy Two Chocolate
-   javac BuyTwoChocolate.java && java GreedyApproach.Solution
+   javac BuyTwoChocolate.java && java GreedyAlgorithms.Solution
 
    # For Array Partition
-   javac partition.java && java GreedyApproach.partition
+   javac partition.java && java GreedyAlgorithms.partition
 
    # For DI String Match
-   javac DiStringMatch.java && java GreedyApproach.DiStringMatch
-
-   # For Minimum Coin Change
-   javac minCoin.java && java GreedyApproach.minCoin
+   javac DiStringMatch.java && java GreedyAlgorithms.DiStringMatch
 
    # For Job Sequencing
-   javac JobSeqPro.java && java GreedyApproach.JobSeqPro
+   javac JobSeqPro.java && java GreedyAlgorithms.JobSeqPro
+   ```
+
+   **Dynamic Programming:**
+   ```bash
+   cd DynamicProgramming
+
+   # For Minimum Coin Change
+   javac minCoin.java && java DynamicProgramming.minCoin
    ```
 
 ## 📊 Algorithm Analysis
@@ -316,10 +359,11 @@ java GreedyApproach.JobSeqPro
 
 ## 🎓 Learning Outcomes
 
-- Understanding greedy algorithm paradigm
-- Implementing optimal sorting-based solutions
-- Working with custom comparators in Java
-- Solving classic computer science problems
+- Understanding greedy algorithm paradigm and when it works optimally
+- Implementing dynamic programming for problems where greedy fails
+- Working with custom comparators and sorting strategies in Java
+- Solving classic computer science problems with different approaches
+- Organizing code by algorithmic approach for better maintainability
 
 ## 👨‍💻 Author
 
@@ -333,4 +377,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-*Developed for HackWithInfy2025 - Demonstrating efficient greedy algorithm implementations in Java.*
+*Developed for HackWithInfy2025 - Demonstrating efficient algorithm implementations organized by approach in Java.*
