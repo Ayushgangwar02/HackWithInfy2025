@@ -12,7 +12,8 @@ HackWithInfy2025/
 │   ├── BuyTwoChocolate.java        # Buy Two Chocolate Problem
 │   ├── partition.java              # Array Partition Problem
 │   ├── DiStringMatch.java          # DI String Match Problem
-│   └── JobSeqPro.java              # Job Sequencing Problem
+│   ├── JobSeqPro.java              # Job Sequencing Problem
+│   └── maxEvent.java               # Maximum Events You Can Attend Problem
 ├── DynamicProgramming/
 │   ├── minCoin.java                # Minimum Coin Change Problem
 │   └── Fibonacci.java              # Fibonacci Sequence Problem
@@ -229,6 +230,44 @@ javac JobSeqPro.java
 java GreedyAlgorithms.JobSeqPro
 ```
 
+### 7. Maximum Events You Can Attend (`GreedyAlgorithms/maxEvent.java`)
+
+**Problem Statement:**
+Given an array of events where each event has a start day and end day, find the maximum number of events you can attend. You can only attend one event per day.
+
+**Algorithm Approach:**
+- **Greedy Strategy**: Use a min-heap to always attend the event that ends earliest among available events
+- **Time Complexity**: O(n log n) for sorting + O(d × log n) for processing days
+- **Space Complexity**: O(n) for the priority queue
+
+**Solution Explanation:**
+1. Sort events by start day to process them in chronological order
+2. Use a min-heap (priority queue) to store end days of available events
+3. For each day from earliest start to latest end:
+   - Add all events that start by current day to the heap
+   - Remove events that have already ended (end day < current day)
+   - If events are available, attend the one ending earliest (remove from heap)
+4. Return the count of attended events
+
+**Key Insight:**
+The greedy choice is to always attend the event that ends earliest among currently available events. This maximizes the chance of attending more events later.
+
+**Example:**
+```
+Events: [[1,2], [2,3], [3,4]]
+Day 1: Available events end on [2], attend event ending on day 2
+Day 2: Available events end on [3], attend event ending on day 3
+Day 3: Available events end on [4], attend event ending on day 4
+Result: 3 events attended
+```
+
+**How to Run:**
+```bash
+cd GreedyAlgorithms
+javac maxEvent.java
+java GreedyAlgorithms.maxEvent
+```
+
 ## 🔵 Dynamic Programming
 
 ### 7. Minimum Coin Change Problem (`DynamicProgramming/minCoin.java`)
@@ -376,6 +415,9 @@ java GreedyAlgorithms.JobSeqPro
 
    # For Job Sequencing
    javac JobSeqPro.java && java GreedyAlgorithms.JobSeqPro
+
+   # For Maximum Events You Can Attend
+   javac maxEvent.java && java GreedyAlgorithms.maxEvent
    ```
 
    **Dynamic Programming:**
@@ -399,6 +441,7 @@ java GreedyAlgorithms.JobSeqPro
 | Array Partition | O(n log n) | O(1) | Greedy: Adjacent pairs after sorting |
 | DI String Match | O(n) | O(1) | Greedy: Min for 'I', Max for 'D' |
 | Job Sequencing | O(n²) | O(max_deadline) | Greedy: Highest profit first |
+| Maximum Events | O(n log n + d log n) | O(n) | Greedy: Earliest end time with heap |
 | Minimum Coin Change | O(amount × coins) | O(amount) | DP: Optimal substructure |
 | Fibonacci Sequence | O(2^n) | O(n) | Recursion: Mathematical definition |
 
